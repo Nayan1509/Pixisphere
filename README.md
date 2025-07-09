@@ -1,36 +1,102 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## ⚙️ Setup Instructions
 
-## Getting Started
-
-First, run the development server:
-
+### 1. Clone the Repo
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/your-username/pixisphere.git
+cd pixisphere
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Install Dependencies
+```bash
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 3. Setup Tailwind CSS (if needed)
+```bash
+npx tailwindcss init -p
+```
+Ensure your `tailwind.config.js` has:
+```js
+content: [
+  './pages/**/*.{js,ts,jsx,tsx}',
+  './components/**/*.{js,ts,jsx,tsx}',
+]
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 4. Run the JSON Server
+```bash
+npm install -g json-server
+json-server --watch db.json --port 3001
+```
 
-## Learn More
+API will be available at:
+```
+http://localhost:3001/photographers
+```
 
-To learn more about Next.js, take a look at the following resources:
+### 5. Run the Development Server
+```bash
+npm run dev
+```
+Visit [http://localhost:3000](http://localhost:3000) to view the app.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🧠 Filtering, Search & Logic
 
-## Deploy on Vercel
+- **Debounced Search:** uses `useEffect` and `setTimeout` to delay filtering
+- **Filters:**
+  - Price Range (Slider)
+  - Rating (3+, 4+, 4.5+)
+  - Styles (Checkbox)
+  - City (Dropdown)
+- **Sort Options:**
+  - Price (Low → High)
+  - Rating (High → Low)
+  - Recently Added (by ID)
+- **Pagination:**
+  - "Load More" button loads 6 more photographers at a time
+- **Skeleton Loader:**
+  - Shows placeholder cards while fetching
+- **Context API:**
+  - Filters are managed globally using `FilterContext`
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 📦 Tech Stack
+
+- **Next.js (React)** — Frontend framework
+- **Tailwind CSS** — Styling
+- **Axios** — API requests
+- **React Context API** — Global state management
+- **JSON Server** — Mock REST API
+- **react-loading-skeleton** — Loading UI
+
+---
+
+## 🔗 Deployment (Optional)
+
+To deploy on Vercel:
+1. Push your code to GitHub
+2. Go to [vercel.com](https://vercel.com)
+3. Import your repository
+4. Set build command: `npm run build`
+5. Output directory: `.`
+
+**Note:** JSON Server must be hosted separately or replaced with real API.
+
+---
+
+## 📸 Screenshots (Optional)
+_Add UI screenshots here if needed._
+
+---
+
+## ✅ To-Do (Bonus)
+- [ ] Add IntersectionObserver-based Infinite Scroll
+- [ ] Form validation in inquiry modal
+- [ ] Mobile drawer filters UI
+
+---
+
+Feel free to fork, improve, and build upon this project!
