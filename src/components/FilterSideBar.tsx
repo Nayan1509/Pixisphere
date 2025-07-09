@@ -1,17 +1,12 @@
-// components/FilterSidebar.tsx
 import { Photographer } from "@/pages/category";
-
-interface Props {
-  filters: any;
-  setFilters: (f: any) => void;
-  photographers: Photographer[];
-}
+import { useFilterContext } from "@/context/FilterContext";
 
 export default function FilterSidebar({
-  filters,
-  setFilters,
   photographers,
-}: Props) {
+}: {
+  photographers: Photographer[];
+}) {
+  const { filters, setFilters } = useFilterContext();
   const allCities = [...new Set(photographers.map((p) => p.location))];
   const allStyles = [...new Set(photographers.flatMap((p) => p.styles))];
 
@@ -19,7 +14,6 @@ export default function FilterSidebar({
     <aside className="w-full md:w-1/4 border border-gray-200 p-4 rounded shadow-sm bg-white">
       <h2 className="text-lg font-semibold mb-4">Filters</h2>
 
-      {/* Price */}
       <div className="mb-4">
         <label className="font-medium">Price Range</label>
         <input
@@ -36,7 +30,6 @@ export default function FilterSidebar({
         <p className="text-sm text-gray-500">Up to ₹{filters.price[1]}</p>
       </div>
 
-      {/* Rating */}
       <div className="mb-4">
         <label className="font-medium">Minimum Rating</label>
         <select
@@ -51,7 +44,6 @@ export default function FilterSidebar({
         </select>
       </div>
 
-      {/* Styles */}
       <div className="mb-4">
         <label className="font-medium">Styles</label>
         <div className="flex flex-wrap gap-2 mt-2">
@@ -80,7 +72,6 @@ export default function FilterSidebar({
         </div>
       </div>
 
-      {/* City */}
       <div className="mb-4">
         <label className="font-medium">City</label>
         <select
@@ -97,7 +88,6 @@ export default function FilterSidebar({
         </select>
       </div>
 
-      {/* Sorting */}
       <div>
         <label className="font-medium">Sort By</label>
         <select

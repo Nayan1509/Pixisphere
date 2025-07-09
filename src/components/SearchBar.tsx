@@ -1,9 +1,10 @@
-interface Props {
+export default function SearchBar({
+  query,
+  setQuery,
+}: {
   query: string;
-  setQuery: (value: string) => void;
-}
-
-export default function SearchBar({ query, setQuery }: Props) {
+  setQuery: (v: string) => void;
+}) {
   return (
     <div className="w-full">
       <input

@@ -1,39 +1,47 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import axios from "axios";
+import { getPhotographerById } from "@/utils/api";
+import PhotographerGallery from "@/components/PhotographerGallery";
+import ReviewSection from "@/components/ReviewSection";
+import InquiryModal from "@/components/InquiryModal";
 
 export default function ProfilePage() {
   const { id } = useRouter().query;
-  const [photographer, setPhotographer] = useState<any>(null);
+  const [profile, setProfile] = useState<any>(null);
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     if (id) {
-      axios
-        .get(`http://localhost:3001/photographers/${id}`)
-        .then((res) => setPhotographer(res.data));
+      getPhotographerById(Number(id)).then((res) => setProfile(res.data));
     }
   }, [id]);
 
-  if (!photographer) return <p className="p-6">Loading profile...</p>;
+  if (!profile) return <p className="p-6">Loading profile...</p>;
 
   return (
-    <div className="p-6 max-w-4xl mx-auto">
-      <h1 className="text-2xl font-bold mb-2">{photographer.name}</h1>
-      <p className="text-gray-600 mb-4">{photographer.bio}</p>
-
+    <div className="p-6 max-w-5xl mx-auto">
+      <h1 className="text-3xl font-bold mb-2">{profile.name}</h1>
+      <p className="text-gray-600 mb-4">{profile.bio}</p>
       <div className="mb-4">
-        <strong>Styles:</strong> {photographer.styles.join(", ")}
+        <strong>Styles:</strong> {profile.styles.join(", ")}
         <br />
-        <strong>Tags:</strong> {photographer.tags.join(", ")}
+        <strong>Tags:</strong> {profile.tags.join(", ")}
         <br />
-        <strong>Location:</strong> {photographer.location}
+        <strong>Location:</strong> {profile.location}
         <br />
-        <strong>Price:</strong> ₹{photographer.price}
+        <strong>Price:</strong> ₹{profile.price}
         <br />
-        <strong>Rating:</strong> {photographer.rating} ⭐
+        <strong>Rating:</strong> {profile.rating} ⭐
       </div>
-
-      {/* Add Gallery and Reviews here */}
+      <PhotographerGallery images={profile.portfolio} />
+      <ReviewSection reviews={profile.reviews} />
+      <button
+        onClick={() => setShowModal(true)}
+        className="mt-6 bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700"
+      >
+        Send Inquiry
+      </button>
+      {showModal && <InquiryModal onClose={() => setShowModal(false)} />}
     </div>
   );
 }

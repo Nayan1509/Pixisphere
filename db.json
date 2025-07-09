@@ -99,6 +99,66 @@
             "date": "2024-09-10"
           }
         ]
+      },
+      {
+        "id": 6,
+        "name": "Snapshot Studio",
+        "location": "Hyderabad",
+        "price": 7000,
+        "rating": 3.9,
+        "styles": ["Studio"],
+        "tags": ["Birthday", "Family"],
+        "bio": "Affordable indoor shoots with creative themes.",
+        "profilePic": "/images/snapshot.jpg",
+        "portfolio": ["/images/snapshot1.jpg", "/images/snapshot2.jpg"],
+        "reviews": [
+          {
+            "name": "Vikram",
+            "rating": 3.5,
+            "comment": "Decent service, could improve on punctuality.",
+            "date": "2024-09-10"
+          }
+        ]
+      },
+      {
+        "id": 7,
+        "name": "Snapshot Studio",
+        "location": "Hyderabad",
+        "price": 7000,
+        "rating": 3.9,
+        "styles": ["Studio"],
+        "tags": ["Birthday", "Family"],
+        "bio": "Affordable indoor shoots with creative themes.",
+        "profilePic": "/images/snapshot.jpg",
+        "portfolio": ["/images/snapshot1.jpg", "/images/snapshot2.jpg"],
+        "reviews": [
+          {
+            "name": "Vikram",
+            "rating": 3.5,
+            "comment": "Decent service, could improve on punctuality.",
+            "date": "2024-09-10"
+          }
+        ]
+      },
+      {
+        "id": 8,
+        "name": "Snapshot Studio",
+        "location": "Hyderabad",
+        "price": 7000,
+        "rating": 3.9,
+        "styles": ["Studio"],
+        "tags": ["Birthday", "Family"],
+        "bio": "Affordable indoor shoots with creative themes.",
+        "profilePic": "/images/snapshot.jpg",
+        "portfolio": ["/images/snapshot1.jpg", "/images/snapshot2.jpg"],
+        "reviews": [
+          {
+            "name": "Vikram",
+            "rating": 3.5,
+            "comment": "Decent service, could improve on punctuality.",
+            "date": "2024-09-10"
+          }
+        ]
       }
     ]
         }
