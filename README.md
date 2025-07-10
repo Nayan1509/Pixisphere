@@ -1,90 +1,106 @@
-## ⚙️ Setup Instructions
+# 📸 Pixisphere - Photographer Booking Platform
 
-### 1. Clone the Repo
+Pixisphere is a responsive and elegant web platform to discover and book photographers for weddings, maternity, family portraits, and more. It features a beautiful landing page, category-based listings, real-time filtering, animations, and clean UI.
+
+---
+
+## 🚀 Setup Instructions
+
+### 1. **Clone the repository**
 ```bash
 git clone https://github.com/your-username/pixisphere.git
 cd pixisphere
 ```
 
-### 2. Install Dependencies
+### 2. **Install dependencies**
 ```bash
 npm install
 ```
 
-### 3. Run the JSON Server
-```bash
-npm install -g json-server
-json-server --watch db.json --port 3001
-```
-
-API will be available at:
-```
-http://localhost:3001/photographers
-```
-
-### 5. Run the Development Server
+### 3. **Run the development server**
 ```bash
 npm run dev
 ```
-Visit [http://localhost:3000](http://localhost:3000) to view the app.
+
+Visit [http://localhost:3000](http://localhost:3000) in your browser.
 
 ---
 
-## 🧠 Filtering, Search & Logic
+## 🧱 Project Structure
 
-- **Debounced Search:** uses `useEffect` and `setTimeout` to delay filtering
-- **Filters:**
-  - Price Range (Slider)
-  - Rating (3+, 4+, 4.5+)
-  - Styles (Checkbox)
-  - City (Dropdown)
-- **Sort Options:**
-  - Price (Low → High)
-  - Rating (High → Low)
-  - Recently Added (by ID)
-- **Pagination:**
-  - "Load More" button loads 6 more photographers at a time
-- **Skeleton Loader:**
-  - Shows placeholder cards while fetching
-- **Context API:**
-  - Filters are managed globally using `FilterContext`
+```
+├── components/         # Reusable UI components (Navbar, Card, Filters, Modal)
+├── context/            # Global FilterContext (price, city, styles, sort, etc.)
+├── pages/              # Next.js route-based pages (landing, category, profile)
+├── public/             # Static assets like images
+├── utils/api.ts        # Simulated API for photographer data
+├── styles/             # Tailwind and global styles
+```
+
+---
+
+## 🧠 Filtering, Debounce & Logic
+
+### 🔍 Debounced Filtering
+- The `CategoryPage` implements **debounced filtering** using `setTimeout` and `clearTimeout` inside a `useEffect`.
+- This ensures filter/search logic is not called on every keystroke, but only **after 300ms** of inactivity.
+
+### 🎛️ Filtering Logic
+Photographers are filtered based on:
+
+- **Search Query** – Matches `name`, `location`, or `tags`
+- **Category Tab** – Filters photographers by selected `tag`
+- **Filters Sidebar** – Filters by:
+  - Price range
+  - Rating (minimum)
+  - Styles (checkboxes)
+  - City (dropdown)
+  - Sort by: Price, Rating, or Recently Added
+
+```ts
+result = photographers.filter(p =>
+  p.price >= filters.price[0] &&
+  p.price <= filters.price[1] &&
+  p.rating >= filters.rating &&
+  (filters.city ? p.location === filters.city : true) &&
+  (filters.styles.length === 0 || filters.styles.some(style => p.styles.includes(style)))
+);
+```
+
+### ⏱️ Sorting
+Results can be sorted by:
+- **Price (Low → High)**
+- **Rating (High → Low)**
+- **Recently Added (by ID)**
+
+---
+
+## 💎 Features
+
+- 🖼️ Masonry photo gallery with lightbox
+- 🎯 Tag/category-based tabs
+- ⚙️ Filter sidebar as animated drawer
+- 🧠 Debounced search logic
+- 📱 Fully responsive & mobile-friendly
+- 💌 Modal inquiry form with validation + toast
+- ⚡ Framer Motion animations
 
 ---
 
 ## 📦 Tech Stack
 
-- **Next.js (React)** — Frontend framework
-- **Tailwind CSS** — Styling
-- **Axios** — API requests
-- **React Context API** — Global state management
-- **JSON Server** — Mock REST API
-- **react-loading-skeleton** — Loading UI
+- [Next.js](https://nextjs.org/)
+- [React](https://react.dev/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Framer Motion](https://www.framer.com/motion/)
+- [React Hot Toast](https://react-hot-toast.com/)
+- [React Loading Skeleton](https://github.com/dvtng/react-loading-skeleton)
 
 ---
 
-## 🔗 Deployment (Optional)
+## 📸 Credits
 
-To deploy on Vercel:
-1. Push your code to GitHub
-2. Go to [vercel.com](https://vercel.com)
-3. Import your repository
-4. Set build command: `npm run build`
-5. Output directory: `.`
-
-**Note:** JSON Server must be hosted separately or replaced with real API.
+Mock photographer data and sample images are for demonstration purposes only.
 
 ---
 
-## 📸 Screenshots (Optional)
-_Add UI screenshots here if needed._
-
----
-
-## ✅ To-Do (Bonus)
-- [ ] Add IntersectionObserver-based Infinite Scroll
-- [ ] Form validation in inquiry modal
-- [ ] Mobile drawer filters UI
-
----
-
-Feel free to fork, improve, and build upon this project!
