@@ -11,19 +11,7 @@ cd pixisphere
 npm install
 ```
 
-### 3. Setup Tailwind CSS (if needed)
-```bash
-npx tailwindcss init -p
-```
-Ensure your `tailwind.config.js` has:
-```js
-content: [
-  './pages/**/*.{js,ts,jsx,tsx}',
-  './components/**/*.{js,ts,jsx,tsx}',
-]
-```
-
-### 4. Run the JSON Server
+### 3. Run the JSON Server
 ```bash
 npm install -g json-server
 json-server --watch db.json --port 3001

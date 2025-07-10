@@ -11,8 +11,7 @@ export default function FilterSidebar({
   const allStyles = [...new Set(photographers.flatMap((p) => p.styles))];
 
   return (
-    <aside className="w-full md:w-1/4 border border-gray-200 p-4 rounded shadow-sm bg-white">
-      <h2 className="text-lg font-semibold mb-4">Filters</h2>
+    <aside className="w-full">
 
       <div className="mb-4">
         <label className="font-medium">Price Range</label>
