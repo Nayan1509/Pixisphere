@@ -98,16 +98,17 @@ export default function CategoryPage() {
         </h1>
 
         {/* Filters + Search in Row */}
-        <div className="flex items-center gap-3 mb-4">
+        <div className="flex items-center gap-4 m-10">
+          <CategoryTabs />
+          <div className="flex-1">
+            <SearchBar query={searchQuery} setQuery={setSearchQuery} />
+          </div>
           <button
             onClick={() => setShowFilters(true)}
             className="px-4 py-2 bg-[#E7473C] text-white rounded hover:bg-red-700 cursor-pointer"
           >
             Filters
           </button>
-          <div className="flex-1">
-            <SearchBar query={searchQuery} setQuery={setSearchQuery} />
-          </div>
         </div>
 
         {/* Drawer Filter Sidebar */}
@@ -125,11 +126,11 @@ export default function CategoryPage() {
 
               {/* Sliding Panel */}
               <motion.div
-                className="fixed top-0 left-0 h-full w-72 bg-white shadow-md p-4 overflow-y-auto z-50"
-                initial={{ x: "-100%" }}
+                className="fixed top-0 right-0 h-full w-72 bg-[#F0F0F0] shadow-md p-4 overflow-y-auto z-50"
+                initial={{ x: "100%" }}
                 animate={{ x: 0 }}
-                exit={{ x: "-100%" }}
-                transition={{ type: "tween", duration: 0.3 }}
+                exit={{ x: "100%" }}
+                transition={{ type: "tween", duration: 0.5 }}
               >
                 <div className="flex justify-between items-center mb-4">
                   <h2 className="text-lg font-semibold">Filters</h2>
@@ -146,8 +147,7 @@ export default function CategoryPage() {
           )}
         </AnimatePresence>
 
-        <CategoryTabs />
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
           {isLoading ? (
             [...Array(6)].map((_, i) => (
               <div key={i} className="p-4 bg-white rounded shadow">

@@ -10,12 +10,18 @@
         "tags": ["Candid", "Maternity"],
         "bio": "Award-winning studio specializing in maternity and newborn shoots.",
         "profilePic": "/images/ravi.jpg",
-        "portfolio": ["/images/portfolio1.jpg", "/images/portfolio2.jpg"],
+        "portfolio": ["/images/portfolio1.jpg", "/images/portfolio2.jpg", "/images/portfolio3.jpg", "/images/portfolio4.jpg"],
         "reviews": [
           {
             "name": "Ananya",
             "rating": 5,
             "comment": "Truly amazing photos and experience!",
+            "date": "2024-12-15"
+          },
+          {
+            "name": "Aanya",
+            "rating": 4,
+            "comment": "Very experienced and talented!",
             "date": "2024-12-15"
           }
         ]
@@ -34,6 +40,12 @@
         "reviews": [
           {
             "name": "Priya",
+            "rating": 4,
+            "comment": "Very professional and punctual!",
+            "date": "2024-10-01"
+          },
+          {
+            "name": "Amit",
             "rating": 4,
             "comment": "Very professional and punctual!",
             "date": "2024-10-01"
@@ -57,6 +69,12 @@
             "rating": 5,
             "comment": "We loved every single moment they captured.",
             "date": "2025-01-22"
+          },
+          {
+            "name": "Rohan",
+            "rating": 5,
+            "comment": "We loved every single moment they captured.",
+            "date": "2025-01-22"
           }
         ]
       },
@@ -74,6 +92,12 @@
         "reviews": [
           {
             "name": "Sneha",
+            "rating": 4.5,
+            "comment": "Captured our maternity journey so beautifully.",
+            "date": "2024-11-05"
+          },
+          {
+            "name": "Mohit",
             "rating": 4.5,
             "comment": "Captured our maternity journey so beautifully.",
             "date": "2024-11-05"

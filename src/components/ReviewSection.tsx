@@ -1,24 +1,43 @@
-interface Review {
-  name: string;
-  rating: number;
-  comment: string;
-  date: string;
-}
+export default function ReviewSection({
+  reviews,
+}: {
+  reviews: {
+    name: string;
+    rating: number;
+    comment: string;
+    date: string;
+  }[];
+}) {
+  if (!reviews || reviews.length === 0) {
+    return <p className="text-gray-500 text-sm">No reviews yet.</p>;
+  }
 
-export default function ReviewSection({ reviews }: { reviews: Review[] }) {
   return (
-    <div className="mt-6">
-      <h2 className="text-xl font-semibold mb-3">Reviews</h2>
-      {reviews.map((r, i) => (
-        <div key={i} className="border-b py-2">
-          <div className="flex justify-between">
-            <p className="font-medium">{r.name}</p>
-            <p className="text-yellow-500">⭐ {r.rating}</p>
+    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      {reviews.map((review, index) => (
+        <div
+          key={index}
+          className="bg-white rounded-lg shadow p-4 flex flex-col justify-between"
+        >
+          <div className="flex gap-4 items-center">
+            <div className="w-8 h-8 rounded-full bg-[#E7473C] text-white flex items-center justify-center">
+              A
+            </div>
+            <div className="mb-2">
+              <h3 className="text-base font-semibold text-[#E7473C]">
+                {review.name}
+              </h3>
+              <p className="text-sm text-gray-500">{review.date}</p>
+            </div>
           </div>
-          <p className="text-sm text-gray-600">{r.comment}</p>
-          <p className="text-xs text-gray-400">
-            {new Date(r.date).toLocaleDateString()}
-          </p>
+
+          <div className="flex items-center text-yellow-500 text-sm mb-2">
+            {"⭐".repeat(Math.floor(review.rating))}
+            {review.rating % 1 !== 0 ? "½" : ""}
+            <span className="ml-2 text-gray-600">{review.rating}</span>
+          </div>
+
+          <p className="text-sm text-gray-700 mt-1">{review.comment}</p>
         </div>
       ))}
     </div>

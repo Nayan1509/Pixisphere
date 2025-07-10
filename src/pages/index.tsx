@@ -2,6 +2,7 @@ import { useRouter } from 'next/router'
 import { motion } from 'framer-motion'
 import { Camera } from 'lucide-react'
 
+
 export default function Home() {
   const router = useRouter()
 

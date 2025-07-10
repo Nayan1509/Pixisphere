@@ -25,7 +25,7 @@ export default function CategoryTabs() {
   };
 
   return (
-    <div className="flex flex-wrap gap-2 mb-4">
+    <div className="flex flex-wrap gap-2 item-center justify-center">
       {categories.map((cat) => (
         <button
           key={cat}
