@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "http://localhost:3001",
+  baseURL: "https://pixisphere-api-k3af.onrender.com/api",
 });
 
 export const getPhotographers = () => API.get("/photographers");
