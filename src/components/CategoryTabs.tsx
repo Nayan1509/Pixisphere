@@ -30,9 +30,9 @@ export default function CategoryTabs() {
         <button
           key={cat}
           onClick={() => handleClick(cat)}
-          className={`px-4 py-1.5 rounded-full border transition text-sm cursor-pointer ${
+          className={`px-4 py-1.5 rounded-full border transition text-sm cursor-pointer hover:border-[#E7473C] ${
             selected === cat.toLowerCase() || (!selected && cat === "All")
-              ? "bg-blue-600 text-white"
+              ? "bg-[#E7473C] text-white"
               : "bg-white text-gray-700 border-gray-300 hover:bg-gray-100"
           }`}
         >

@@ -10,6 +10,7 @@ import SearchBar from '@/components/SearchBar'
 import CategoryTabs from '@/components/CategoryTabs'
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
+import { motion, AnimatePresence } from "framer-motion";
 
 export interface Photographer {
   id: number
@@ -100,7 +101,7 @@ export default function CategoryPage() {
         <div className="flex items-center gap-3 mb-4">
           <button
             onClick={() => setShowFilters(true)}
-            className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 cursor-pointer"
+            className="px-4 py-2 bg-[#E7473C] text-white rounded hover:bg-red-700 cursor-pointer"
           >
             Filters
           </button>
@@ -110,30 +111,43 @@ export default function CategoryPage() {
         </div>
 
         {/* Drawer Filter Sidebar */}
-        {showFilters && (
-          <div className="fixed inset-0 z-50 bg-black/30">
-            <div className="fixed top-0 left-0 h-full w-72 bg-white shadow-md p-5 overflow-y-auto">
-              <div className="flex justify-between items-center mb-4">
-                <h2 className="text-lg font-semibold">Filters</h2>
-                <button
-                  onClick={() => setShowFilters(false)}
-                  className="text-gray-900 hover:text-red-900 cursor-pointer"
-                >
-                  ✕
-                </button>
-              </div>
-              <FilterSidebar photographers={photographers} />
-            </div>
-            {/* click outside to close */}
-            <div
-              onClick={() => setShowFilters(false)}
-              className="fixed inset-0 z-40"
-            ></div>
-          </div>
-        )}
-<CategoryTabs />
+        <AnimatePresence>
+          {showFilters && (
+            <>
+              {/* Backdrop */}
+              <motion.div
+                className="fixed inset-0 bg-black/30 z-40"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                onClick={() => setShowFilters(false)}
+              />
+
+              {/* Sliding Panel */}
+              <motion.div
+                className="fixed top-0 left-0 h-full w-72 bg-white shadow-md p-4 overflow-y-auto z-50"
+                initial={{ x: "-100%" }}
+                animate={{ x: 0 }}
+                exit={{ x: "-100%" }}
+                transition={{ type: "tween", duration: 0.3 }}
+              >
+                <div className="flex justify-between items-center mb-4">
+                  <h2 className="text-lg font-semibold">Filters</h2>
+                  <button
+                    onClick={() => setShowFilters(false)}
+                    className="text-gray-600 hover:text-black"
+                  >
+                    ✕
+                  </button>
+                </div>
+                <FilterSidebar photographers={photographers} />
+              </motion.div>
+            </>
+          )}
+        </AnimatePresence>
+
+        <CategoryTabs />
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          
           {isLoading ? (
             [...Array(6)].map((_, i) => (
               <div key={i} className="p-4 bg-white rounded shadow">
@@ -156,7 +170,7 @@ export default function CategoryPage() {
           <div className="mt-6 text-center">
             <button
               onClick={() => setVisibleCount((prev) => prev + 6)}
-              className="px-6 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+              className="px-6 py-2 bg-[#E7473C] text-white rounded hover:bg-red-700"
             >
               Load More
             </button>

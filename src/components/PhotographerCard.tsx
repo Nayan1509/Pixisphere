@@ -8,7 +8,7 @@ export default function PhotographerCard({
 }) {
   const router = useRouter();
   return (
-    <div className="bg-white shadow rounded-lg overflow-hidden transition hover:scale-105 duration-200">
+    <div className="bg-white shadow rounded-lg overflow-hidden transition hover:scale-105 hover:shadow-[#E7473C] duration-200">
       <img
         src={photographer.profilePic}
         alt={photographer.name}
@@ -30,7 +30,7 @@ export default function PhotographerCard({
         </div>
         <button
           onClick={() => router.push(`/profile/${photographer.id}`)}
-          className="mt-4 w-full bg-blue-600 text-white py-1.5 rounded hover:bg-blue-700"
+          className="mt-4 w-full bg-[#E7473C] text-white py-1.5 rounded hover:bg-red-700"
         >
           View Profile
         </button>
