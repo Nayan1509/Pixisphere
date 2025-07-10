@@ -93,29 +93,26 @@ export default function CategoryPage() {
       </Head>
 
       <main className="p-4 max-w-screen-xl mx-auto">
-        <h1 className="text-3xl font-bold mb-4">
+        <h1 className="text-3xl font-bold mb-4 text-[#954C2E]">
           Find best Photographer for you
         </h1>
 
-        {/* Filters + Search in Row */}
-        <div className="flex items-center gap-4 m-10">
+        <div className="flex flex-col md:flex-row items-center gap-4 m-5">
           <CategoryTabs />
-          <div className="flex-1">
+          <div className="flex gap-2 flex-1">
             <SearchBar query={searchQuery} setQuery={setSearchQuery} />
+            <button
+              onClick={() => setShowFilters(true)}
+              className="px-4 py-2 bg-[#DCC5B2] text-white rounded hover:bg-[#D9A299] cursor-pointer"
+            >
+              Filters
+            </button>
           </div>
-          <button
-            onClick={() => setShowFilters(true)}
-            className="px-4 py-2 bg-[#E7473C] text-white rounded hover:bg-red-700 cursor-pointer"
-          >
-            Filters
-          </button>
         </div>
 
-        {/* Drawer Filter Sidebar */}
         <AnimatePresence>
           {showFilters && (
             <>
-              {/* Backdrop */}
               <motion.div
                 className="fixed inset-0 bg-black/30 z-40"
                 initial={{ opacity: 0 }}
@@ -123,8 +120,6 @@ export default function CategoryPage() {
                 exit={{ opacity: 0 }}
                 onClick={() => setShowFilters(false)}
               />
-
-              {/* Sliding Panel */}
               <motion.div
                 className="fixed top-0 right-0 h-full w-72 bg-[#F0F0F0] shadow-md p-4 overflow-y-auto z-50"
                 initial={{ x: "100%" }}
@@ -147,7 +142,7 @@ export default function CategoryPage() {
           )}
         </AnimatePresence>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+        <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-3 gap-10">
           {isLoading ? (
             [...Array(6)].map((_, i) => (
               <div key={i} className="p-4 bg-white rounded shadow">
@@ -170,7 +165,7 @@ export default function CategoryPage() {
           <div className="mt-6 text-center">
             <button
               onClick={() => setVisibleCount((prev) => prev + 6)}
-              className="px-6 py-2 bg-[#E7473C] text-white rounded hover:bg-red-700"
+              className="px-6 py-2 bg-[#DCC5B2] text-white rounded hover:bg-[#D9A299] cursor-pointer"
             >
               Load More
             </button>

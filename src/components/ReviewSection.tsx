@@ -20,11 +20,11 @@ export default function ReviewSection({
           className="bg-white rounded-lg shadow p-4 flex flex-col justify-between"
         >
           <div className="flex gap-4 items-center">
-            <div className="w-8 h-8 rounded-full bg-[#E7473C] text-white flex items-center justify-center">
+            <div className="w-8 h-8 rounded-full bg-[#DCC5B2] text-white flex items-center justify-center">
               A
             </div>
             <div className="mb-2">
-              <h3 className="text-base font-semibold text-[#E7473C]">
+              <h3 className="text-base font-semibold text-[#954C2E]">
                 {review.name}
               </h3>
               <p className="text-sm text-gray-500">{review.date}</p>
