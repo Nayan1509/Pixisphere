@@ -8,7 +8,7 @@ Pixisphere is a responsive and elegant web platform to discover and book photogr
 
 ### 1. **Clone the repository**
 ```bash
-git clone https://github.com/your-username/pixisphere.git
+git clone [https://github.com/Nayan1509/Pixisphere.git]
 cd pixisphere
 ```
 
