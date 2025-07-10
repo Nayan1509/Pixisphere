@@ -155,9 +155,16 @@ export default function CategoryPage() {
               No photographers found.
             </p>
           ) : (
-            filtered
-              .slice(0, visibleCount)
-              .map((p) => <PhotographerCard key={p.id} photographer={p} />)
+            filtered.slice(0, visibleCount).map((p, i) => (
+              <motion.div
+                key={p.id}
+                initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: i * 0.05, ease: "easeOut" }}
+              >
+                <PhotographerCard photographer={p} />
+              </motion.div>
+            ))
           )}
         </div>
 
