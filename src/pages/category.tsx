@@ -89,7 +89,7 @@ export default function CategoryPage() {
   return (
     <>
       <Head>
-        <title>{titleTag} Photographers | Pixisphere</title>
+        <title>Pixisphere</title>
       </Head>
 
       <main className="p-4 max-w-screen-xl mx-auto">
